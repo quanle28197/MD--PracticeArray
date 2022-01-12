@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <title>Tu Dien</title>
+</body>
+<script>
+    let vietDic = ["tu dien", "con cho", "con meo", "con ga"];
+    let engDic = ["Dictinary", "dog", "cat", "chicken"];
+
+    let x = prompt("Enter a word: ");
+    if ( vietDic.indexOf(x) !== -1 || engDic.indexOf(x) !== -1 ) {
+        if (vietDic.indexOf(x) !== -1)
+            alert("Meaning:" + engDic[vietDic.indexOf(x)]);
+            else alert("Nghia la :" + vietDic[engDic.indexOf(x)]);
+    }else alert("NOT FOUND");
+</script>
+</html>
