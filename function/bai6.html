@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form>
+        <input type="text" placeholder="Enter the number"
+        oninput="doubleTheNumber(this.value)"
+        onchange="doubleTheNumber(this.value)">
+        <br>
+        <span>Result: </span>
+        <span id="result"></span>
+    </form>
+    <script>
+       document.getElementById('result').innerHTML = '';
+       function doubleTheNumber(valNum) {
+           valNum = parseFloat(valNum);
+           document.getElementById('result').innerHTML = valNum * valNum;
+       }
+    </script>
+</body>
+</html>

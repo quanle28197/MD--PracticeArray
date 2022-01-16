@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" onclick="findMin()" value="show array and min" style="position: absolute; left: 550px; top: 50px">
+</body>
+<script>
+    let x = [];
+    let min;
+    let message;
+    
+    function findMin() {
+        for (let i = 0; i < 3; i++) {
+            x[i] =Math.floor(Math.random() * 200 - 100);
+        }
+        min = x[0];
+        for (let i = 0; i < 3; i++) {
+            if(x[i + 1] < min)
+            min = x[i + 1];
+        }
+        message = 'Intital array' + x.join() + ', min of array:' + min;
+        alert('message');
+    }
+</script>
+</html>

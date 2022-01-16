@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <input type="number" id = "argument" placeholder="argument"
+        oninput = "changeTheNumbers(this.value)"
+        onchange = "changeTheNumbers(this.value)">
+        <span id = "outputAdd"></span>
+    </form>
+</body>
+
+<script>
+    function changeTheNumbers(valNum) {
+        valNum = parseFloat(valNum);
+        valNum++;
+        document.getElementById("outputAdd").innerHTML = valNum;
+    }
+</script>
+</html>

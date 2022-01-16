@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <input type="text" id = "number1" placeholder="Enter a number" 
+                oninput = "compare(this.value)"
+                onchange = "compare(this.value)">
+        <br>
+        <input type="text" id = "number2" placeholder="Enter a number"
+                oninput = "compare(this.value)" 
+                onchange = "compare(this.value)">
+        <br>
+        <span> Result:</span>
+        <span id ="result"></span>
+    </form>
+</body>
+
+<script>
+    function compare(x,y) {
+        x = parseFloat(document.getElementById('number1').value);
+        y = parseFloat(document.getElementById('number2').value);
+        let message, total;
+        message = '';
+        total = x + y;
+        if (isNan(x) === false && isNan(y) === false) {
+            if (x > y)
+            message = x + "is bigger than " + y;
+        else {
+            message = "Total of " + x+ "and" + y + "is: " + total;
+        }
+        }
+        document.getElementById("result").innerHTML = message;
+    }
+</script>
+</html>
