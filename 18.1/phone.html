@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Mobile = function(name, status) {
+            this.name = name;
+            this.battery = 100;
+            this.checkBattery = function() {
+                if (this.battery > 100) {
+                    this.battery = 100;
+                    console.log(this.battery)
+                }else if (this.battery < 0) {
+                    this.battery = 0;
+                    console.log('Battery low, Phone off');
+                    this.status = false;
+                }else console.log('Battery' + this.battery + '%');
+            };
+            this.draft = [];
+
+            // Xem toan bo thu nhap
+            this.allDraft = function() {
+                if (this.status) {
+                    let allDraft = this.draft.entries();
+                    console.log(this.name + 'draftbox: \n');
+                    for (let x of allDraft) {
+                        console.log(x + '\n')
+                    }
+                    this.battery--;
+                }
+                this.checkBattery();
+            };
+            this.inbox = [];
+
+            // Xem toan bo thu den
+            this.allInbox = function() {
+                if(this.status) {
+                    let allInbox = this.inbox.entries();
+                    console.log(this.name + 'Inbox: \n');
+                    for (let x of allInbox) {
+                        console.log(x + '\n');
+                    }
+                    this.battery--;
+                }
+                this.checkBattery();
+            };
+            this.sent = [];
+
+            // Xem toan bo thu da gui
+            this.allSent = function() {
+                if(this.status) {
+                    let allSent = this.sent.entries();
+                    console.log(this.name + 'Sentbox: \n');
+                    for (let x of allSent) {
+                        console.log(x + '\n');
+                    }
+                    this.battery--;
+                }
+                this.checkBattery();
+            };
+            this.status = status;
+
+            // on off phone
+            this.setStatus = function (newstatus) {
+                this.status = newStatus;
+                this.battery--;
+                this.checkBattery();
+            };
+
+            // Kiem tra On Off
+            this.checkOnOff = function () {
+                return this.status;
+            };
+
+            // Xac dien thoai
+            this.chargeBattery = function() {
+                while ( this.battery < 100) {
+                    this.battery++;
+                    console.log(this.name + 'is full');
+                }
+            };
+
+            this.compMsg = function() {
+                if ( this.status) {
+                    let newMsg = prompt('Compose new message: ');
+                    this.draft.push(newMsg);
+                    console.log('Message composed: ' + newMsg);
+                    this.battery--;
+                }
+                this.checkBattery();
+            };
+
+            // gui tin nhan
+
+            this.sendMsg = function (indexDraft, otherMobile) {
+                if (this.status) {
+                    if (otherMobile.status) {
+                        this.sent.push(this.draft[indexDraft]);
+                        otherMobile.inbox.push(this.draft[indexdraft]);
+                        console.log(this.name + 'sent message: ' + this.draft[indexDraft] + 'to' + otherMobile.name);
+                        this.draft.splice(indexDraft, 1);
+                        otherMobile.battery--;
+                    }else console.log(otherMobile.name + 'is busy');
+                    this.battery--;
+                }
+                this.checkBattery();
+            };
+        };
+
+        let iphone = new Mobile('Iphone', true);
+        let samsung = new Mobile('Samsung', true);
+        samsung.checkBattery();
+        samsung.compMsg();
+        samsung.compMsg();
+        samsung.compMsg();
+        samsung.allDraft();
+        samsung.sendMsg(1, iphone);
+        samsung.allSent();
+        iphone.allInbox();
+        iphone.setStatus(false);
+        samsung.sendMsg(0, iphone);
+        iphone.checkOnOff();
+        samsung.chargeBattery();
+    </script>
+</body>
+</html>
