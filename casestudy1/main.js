@@ -11,7 +11,7 @@ var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
 var brickRowCount = 6;
-var brickColumnCount = 4;
+var brickColumnCount = 5;
 var brickWidth = 60;
 var brickHeight = 20;
 var brickPadding = 10;
@@ -19,7 +19,6 @@ var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
 var score = 0;
 var lives = 3;
-var span = document.getElementById('span');
 var cr = 'rgb('+
       Math.floor(Math.random()*256)+','+
       Math.floor(Math.random()*256)+','+
@@ -168,5 +167,6 @@ function draw() {
   y += dy;
   requestAnimationFrame(draw);
 }
+
 
 draw();
